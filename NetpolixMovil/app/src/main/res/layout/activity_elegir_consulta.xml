@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ElegirConsulta"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/rfc1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="RFC1"
+        android:textSize="20sp"
+        android:layout_margin="15dp"/>
+
+    <Button
+        android:id="@+id/rfc2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="RFC2"
+        android:textSize="20sp"
+        android:layout_margin="15dp"/>
+
+    <Button
+        android:id="@+id/rfc3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="RFC3"
+        android:textSize="20sp"
+        android:layout_margin="15dp"/>
+
+    <Button
+        android:id="@+id/rfc4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="RFC4"
+        android:textSize="20sp"
+        android:layout_margin="15dp"/>
+
+    <Button
+        android:id="@+id/rfc5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="RFC5"
+        android:textSize="20sp"
+        android:layout_margin="15dp"/>
+
+    <Button
+        android:id="@+id/rfc6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="RFC6"
+        android:textSize="20sp"
+        android:layout_margin="15dp"/>
+
+    <Button
+        android:id="@+id/rfc7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="RFC7"
+        android:textSize="20sp"
+        android:layout_margin="15dp"/>
+
+    <Button
+        android:id="@+id/rfc8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="RFC8"
+        android:textSize="20sp"
+        android:layout_margin="15dp"/>
+
+    <Button
+        android:id="@+id/rfc9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="RFC9"
+        android:textSize="20sp"
+        android:layout_margin="15dp"/>
+
+</LinearLayout>
