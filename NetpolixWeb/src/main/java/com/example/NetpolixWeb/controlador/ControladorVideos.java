@@ -19,6 +19,37 @@ public class ControladorVideos {
     @Autowired
     private IvideosService service;
 
+    @GetMapping("/graciascompra")
+    public String graciasCompra(){
+        return "graciascompra";
+    }
+
+    @GetMapping("/referidos")
+    public String irReferido(){
+        return "formreferidos";
+    }
+
+    @GetMapping("/graciasreferido")
+    public String graciasReferido(){
+        return "graciasreferido";
+    }
+
+    @GetMapping("/pqr")
+    public String irPqr(){
+        return "formpqr";
+    }
+
+    @GetMapping("/graciaspqr")
+    public String graciasPqr(){
+        return "graciaspqr";
+    }
+
+    @GetMapping("/")
+    public String catalogo(Model model){
+        List<Videos> catalogo = service.listarVideos();
+        model.addAttribute("videos", catalogo);
+        return "index";
+    }
     @GetMapping("/listavideos")
     public String listarVideos(Model model){
         List<Videos> videos = service.listarVideos();

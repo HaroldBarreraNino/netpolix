@@ -2,10 +2,49 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Netpolix</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
 <body>
     <h1>Netpolix</h1>
+    <div class="container mt-4">
+        <h5>¡Puedes referenciar a un amigo aqui!</h5>
+        <a th:href="@{/referidos}" class="btn btn-primary">REFERENCIAR</a>
+    </div>
+    <div class="container mt-4">
+        <h5>Puedes dejarnos tus preguntas, quejas o reclamos por aqui.</h5>
+        <a th:href="@{/pqr}" class="btn btn-warning">HACER PREGUNTA</a>
+    </div>
+    <div class="container mt-4">
+        <h5>Aqui esta nuestro catalogo de videos. ¡Disfruta!</h5>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>TITULO</th>
+                <th>DURACION</th>
+                <th>CATEGORIA</th>
+                <th>ACTORES</th>
+                <th>DIRECTORES</th>
+                <th>ISAN</th>
+                <th>CALIFICACION</th>
+                <th>ACCION</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="video:${videos}">
+                <td th:text="${video.titulo}"></td>
+                <td th:text="${video.duracion}"></td>
+                <td th:text="${video.categoria}"></td>
+                <td th:text="${video.actores}"></td>
+                <td th:text="${video.directores}"></td>
+                <td th:text="${video.isan}"></td>
+                <td th:text="${video.calificacion}"></td>
+                <td>
+                    <a th:href="@{/graciascompra}" class="btn btn-warning">Alquilar o Comprar</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
