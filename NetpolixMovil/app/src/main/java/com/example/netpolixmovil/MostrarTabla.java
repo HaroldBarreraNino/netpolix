@@ -44,23 +44,26 @@ public class MostrarTabla extends AppCompatActivity {
     }
 
     public void tablaVideos(){
-        ArrayList<Video> listausuarios = (ArrayList<Video>) getIntent().getSerializableExtra("tipolista");
-        VideoAdapter adapter = new VideoAdapter(this, listausuarios);
+        ArrayList<Video> listavideos = (ArrayList<Video>) getIntent().getSerializableExtra("tipolista");
+        VideoAdapter adapter = new VideoAdapter(this, listavideos);
         listadatos.setAdapter(adapter);
         listadatos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                /*int id = i + 1;
-                System.out.println("USUARIO = [" + id + "]");
-                Intent intent = new Intent(MostrarTablaActivity.this, CrudActivity.class);
+                int id = i + 1;
+                System.out.println("Video = [" + id + "]");
+                Intent intent = new Intent(MostrarTabla.this, CRUD.class);
                 intent.putExtra("accion", "21");
-                intent.putExtra("id", listausuarios.get(i).getId());
-                intent.putExtra("nombre", listausuarios.get(i).getNombre());
-                intent.putExtra("apellido", listausuarios.get(i).getApellido());
-                intent.putExtra("correo", listausuarios.get(i).getCorreo());
-                intent.putExtra("username", listausuarios.get(i).getUsername());
-                intent.putExtra("password", listausuarios.get(i).getPassword());
-                startActivity(intent);*/
+                intent.putExtra("id", listavideos.get(i).getId_Video());
+                intent.putExtra("titulo", listavideos.get(i).getTitulo());
+                intent.putExtra("duracion", listavideos.get(i).getDuracion());
+                intent.putExtra("categoria", listavideos.get(i).getCategoria());
+                intent.putExtra("actores", listavideos.get(i).getActores());
+                intent.putExtra("directores", listavideos.get(i).getDirectores());
+                intent.putExtra("isan", listavideos.get(i).getIsan());
+                intent.putExtra("calificacion", listavideos.get(i).getCalificacion());
+                intent.putExtra("idioma", listavideos.get(i).getIdioma());
+                startActivity(intent);
             }
         });
         btnCrearDato.setOnClickListener(new View.OnClickListener() {

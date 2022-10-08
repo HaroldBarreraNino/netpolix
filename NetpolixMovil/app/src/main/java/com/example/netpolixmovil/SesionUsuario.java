@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 public class SesionUsuario extends AppCompatActivity {
 
     ImageButton btnIrPqr, btnIrVerPeliculas, btnIrReferidos;
+    PHPController phpController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +20,7 @@ public class SesionUsuario extends AppCompatActivity {
         btnIrPqr = (ImageButton) findViewById(R.id.btnIrPqr);
         btnIrVerPeliculas = (ImageButton) findViewById(R.id.btnIrVerPeliculas);
         btnIrReferidos = (ImageButton) findViewById(R.id.btnIrReferidos);
+        phpController = new PHPController(this);
 
         btnIrPqr.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,7 +33,7 @@ public class SesionUsuario extends AppCompatActivity {
         btnIrVerPeliculas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                phpController.generarCatalogo();
             }
         });
 

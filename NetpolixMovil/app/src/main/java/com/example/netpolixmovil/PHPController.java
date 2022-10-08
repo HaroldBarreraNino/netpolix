@@ -256,6 +256,35 @@ public class PHPController {
 
     }
 
+    public void generarCatalogo(){
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
+                Request.Method.GET,
+                URLREADALLVIDEO,
+                null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        ArrayList<Video> lista = generarListaVideos(response);
+                        Intent intent = new Intent(c, Catalogo.class);
+                        intent.putExtra("lista", lista);
+                        c.startActivity(intent);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(c, "Error al generar Videos...", Toast.LENGTH_SHORT).show();
+                        System.out.println("----------------------------");
+                        System.out.println("ERROR: " + error.getMessage());
+                        System.out.println("----------------------------");
+                    }
+                }
+        );
+
+        requestQueue.add(jsonArrayRequest);
+
+    }
+
     private ArrayList<Video> generarListaVideos(JSONArray jsonArray){
 
         ArrayList<Video> listavideos = new ArrayList<>();

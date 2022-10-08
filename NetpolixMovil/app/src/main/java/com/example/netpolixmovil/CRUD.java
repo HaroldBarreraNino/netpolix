@@ -88,11 +88,14 @@ public class CRUD extends AppCompatActivity {
         campo5.setVisibility(View.VISIBLE);
         crearCampos.setVisibility(View.VISIBLE);
 
-        campo1.setHint("Nombre");
-        campo2.setHint("Apellido");
-        campo3.setHint("Correo electronico");
-        campo4.setHint("Nombre de usuario");
-        campo5.setHint("Clave");
+        campo1.setHint("Titulo");
+        campo2.setHint("Duracion");
+        campo3.setHint("Categoria");
+        campo4.setHint("Actores");
+        campo5.setHint("Directores");
+        campo6.setHint("ISAN");
+        campo7.setHint("Calificacion");
+        campo8.setHint("Idioma");
 
         crearCampos.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -185,29 +188,22 @@ public class CRUD extends AppCompatActivity {
         campo3.setVisibility(View.VISIBLE);
         campo4.setVisibility(View.VISIBLE);
         campo5.setVisibility(View.VISIBLE);
+        campo6.setVisibility(View.VISIBLE);
+        campo7.setVisibility(View.VISIBLE);
+        campo8.setVisibility(View.VISIBLE);
         campoId.setVisibility(View.VISIBLE);
         eliminarCampos.setVisibility(View.VISIBLE);
         editarCampos.setVisibility(View.VISIBLE);
 
         campoId.setText(datosrecibidos.getStringExtra("id"));
-        campo1.setText(datosrecibidos.getStringExtra("nombre"));
-        campo2.setText(datosrecibidos.getStringExtra("apellido"));
-        campo3.setText(datosrecibidos.getStringExtra("correo"));
-        campo4.setText(datosrecibidos.getStringExtra("username"));
-        campo5.setText(datosrecibidos.getStringExtra("password"));
-
-        editarCampos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                /*String id = campoId.getText().toString().trim();
-                String nom = campo1.getText().toString().trim();
-                String ape = campo2.getText().toString().trim();
-                String cor = campo3.getText().toString().trim();
-                String user = campo4.getText().toString().trim();
-                String pass = campo5.getText().toString().trim();
-                controller.EditUser(id, nom, ape, cor, user, pass);*/
-            }
-        });
+        campo1.setText(datosrecibidos.getStringExtra("titulo"));
+        campo2.setText(datosrecibidos.getStringExtra("duracion"));
+        campo3.setText(datosrecibidos.getStringExtra("categoria"));
+        campo4.setText(datosrecibidos.getStringExtra("actores"));
+        campo5.setText(datosrecibidos.getStringExtra("directores"));
+        campo6.setText(datosrecibidos.getStringExtra("isan"));
+        campo7.setText(datosrecibidos.getStringExtra("calificacion"));
+        campo8.setText(datosrecibidos.getStringExtra("idioma"));
 
         eliminarCampos.setOnClickListener(new View.OnClickListener() {
             @Override

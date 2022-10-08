@@ -1,6 +1,8 @@
 package models;
 
-public class Video {
+import java.io.Serializable;
+
+public class Video implements Serializable {
     String id_Video;
     String titulo;
     String duracion;
