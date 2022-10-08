@@ -8,17 +8,24 @@
     android:orientation="vertical">
 
     <ImageButton
-        android:id="@+id/btnIrVerPublicaciones"
+        android:id="@+id/btnIrPqr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:src="@drawable/pqr"/>
 
     <ImageButton
-        android:id="@+id/btnIrEditarPerfil"
+        android:id="@+id/btnIrVerPeliculas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:src="@drawable/verpeliculas"/>
+
+    <ImageButton
+        android:id="@+id/btnIrReferidos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:src="@drawable/referidos"/>
 
 </LinearLayout>

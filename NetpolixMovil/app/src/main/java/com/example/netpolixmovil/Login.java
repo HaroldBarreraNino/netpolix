@@ -29,7 +29,10 @@ public class Login extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+            String nombre_completo, cedula;
+            nombre_completo = txtLogNombre.getText().toString().trim();
+            cedula = txtLogCedula.getText().toString().trim();
+            phpController.Login(nombre_completo, cedula);
             }
         });
 

@@ -35,7 +35,7 @@
         android:layout_margin="10dp">
 
         <Button
-            android:id="@+id/btnTablaUsuarios"
+            android:id="@+id/btnTablaVideos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="VIDEOS"
@@ -43,7 +43,7 @@
             android:layout_margin="15dp"/>
 
         <Button
-            android:id="@+id/btnTablaComentarios"
+            android:id="@+id/btnTablaSeries"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="SERIES"
@@ -51,7 +51,7 @@
             android:layout_margin="15dp"/>
 
         <Button
-            android:id="@+id/btnTablaImagenes"
+            android:id="@+id/btnTablaColeccion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="COLECCION"
