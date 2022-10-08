@@ -39,7 +39,9 @@ public class ElegirConsulta extends AppCompatActivity {
         rfc2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                phpController.ReadAllConsulta("rfc2.php");
+                Intent i = new Intent(ElegirConsulta.this, ResultadoConsulta2.class);
+                i.putExtra("consulta", "2");
+                startActivity(i);
             }
         });
 
@@ -54,6 +56,7 @@ public class ElegirConsulta extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(ElegirConsulta.this, ResultadoConsulta2.class);
+                i.putExtra("consulta", "4");
                 startActivity(i);
             }
         });

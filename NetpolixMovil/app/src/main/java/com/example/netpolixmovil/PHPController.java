@@ -50,6 +50,7 @@ public class PHPController {
     //Consultas URLs
     private static String URLCONSULTA = "http://"+IP+"/netpolix/consultas/";
     private static String URLCONSULTACUATRO = "http://"+IP+"/netpolix/consultas/rfc4.php?idioma=";
+    private static String URLCONSULTADOS = "http://"+IP+"/netpolix/consultas/rfc2.php?calificacion=";
 
     public PHPController(Context context){
         c = context;
@@ -413,6 +414,33 @@ public class PHPController {
 
     public void ReadAllConsultaCuatro(String numero){
         String urlconsulta = URLCONSULTACUATRO + numero;
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
+                Request.Method.GET,
+                urlconsulta,
+                null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        EnviarJSON(response);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(c, "Error al generar resultados...", Toast.LENGTH_SHORT).show();
+                        System.out.println("----------------------------");
+                        System.out.println("ERROR: " + error.getMessage());
+                        System.out.println("----------------------------");
+                    }
+                }
+        );
+
+        requestQueue.add(jsonArrayRequest);
+
+    }
+
+    public void ReadAllConsultaDos(String numero){
+        String urlconsulta = URLCONSULTADOS + numero;
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                 Request.Method.GET,
                 urlconsulta,
