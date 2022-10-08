@@ -5,14 +5,13 @@ import com.example.NetpolixWeb.modelo.Persona;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
 @RequestMapping
-public class Controlador {
+public class ControladorPersona {
 
     @Autowired
     private IpersonaService service;
@@ -24,7 +23,24 @@ public class Controlador {
         System.out.println(personas.toString());
         System.out.println("-------------------------");
         model.addAttribute("personas", personas);
-        return "index";
+        return "listadatos";
     }
 
+    @GetMapping("/new")
+    public String agregar(Model model){
+        model.addAttribute("persona", new Persona());
+        return "form";
+    }
+
+    @PostMapping("/save")
+    public String save (Persona p, Model model){
+        service.save(p);
+        return "redirect:/listar";
+    }
+
+    @GetMapping("/eliminar/{id}")
+    public String delete(Model model, @PathVariable int id){
+        service.delete(id);
+        return "redirect:/listar";
+    }
 }

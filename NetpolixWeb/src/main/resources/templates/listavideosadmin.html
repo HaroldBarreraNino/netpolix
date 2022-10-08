@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de datos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+<div class="container mt-4">
+    <a th:href="@{/newvideo}" class="btn btn-primary">Nuevo</a>
+    <br><br>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>TITULO</th>
+            <th>DURACION</th>
+            <th>CATEGORIA</th>
+            <th>ACTORES</th>
+            <th>DIRECTORES</th>
+            <th>ISAN</th>
+            <th>CALIFICACION</th>
+            <th>IDIOMA</th>
+            <th>ACCION</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="video:${videos}">
+            <td th:text="${video.id_video}"></td>
+            <td th:text="${video.titulo}"></td>
+            <td th:text="${video.duracion}"></td>
+            <td th:text="${video.categoria}"></td>
+            <td th:text="${video.actores}"></td>
+            <td th:text="${video.directores}"></td>
+            <td th:text="${video.isan}"></td>
+            <td th:text="${video.calificacion}"></td>
+            <td th:text="${video.idioma}"></td>
+            <td>
+                <a th:href="@{/eliminarvideo/}+${video.id_video}" class="btn btn-danger">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

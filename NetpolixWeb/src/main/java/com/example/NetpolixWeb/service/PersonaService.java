@@ -27,11 +27,16 @@ public class PersonaService implements IpersonaService {
 
     @Override
     public int save(Persona p) {
-        return 0;
+        int res = 0;
+        Persona persona = data.save(p);
+        if (!persona.equals(null)){
+            res = 1;
+        }
+        return res;
     }
 
     @Override
     public void delete(int id) {
-
+        data.deleteById(id);
     }
 }

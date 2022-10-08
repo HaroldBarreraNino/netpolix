@@ -22,11 +22,11 @@ public class Persona {
         this.fecha_nacimiento = fecha_nacimiento;
     }
 
-    public int getid_Persona() {
+    public int getId_persona() {
         return id_persona;
     }
 
-    public void setid_Persona(int id_persona) {
+    public void setId_persona(int id_persona) {
         this.id_persona = id_persona;
     }
 
