@@ -1,7 +1,6 @@
 package com.example.NetpolixWeb.controlador;
 
 import com.example.NetpolixWeb.interfaceService.IvideosService;
-import com.example.NetpolixWeb.modelo.Persona;
 import com.example.NetpolixWeb.modelo.Videos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

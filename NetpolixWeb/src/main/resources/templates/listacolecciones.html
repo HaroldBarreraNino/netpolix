@@ -2,31 +2,31 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Lista de datos</title>
+  <title>Lista de colecciones</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
 <body>
 <div class="container mt-4">
-  <a th:href="@{/new}" class="btn btn-primary">Nuevo</a>
+  <a th:href="@{/newcoleccion}" class="btn btn-primary">Nuevo</a>
   <br><br>
   <table class="table">
     <thead>
     <tr>
       <th>ID</th>
-      <th>CEDULA</th>
-      <th>NOMBRE COMPLETO</th>
-      <th>FECHA NACIMIENTO</th>
+      <th>TITULO</th>
+      <th>VOLUMEN</th>
+      <th>CAPITULOS</th>
       <th>ACCION</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="persona:${personas}">
-      <td th:text="${persona.id_persona}"></td>
-      <td th:text="${persona.cedula}"></td>
-      <td th:text="${persona.nombre_completo}"></td>
-      <td th:text="${persona.fecha_nacimiento}"></td>
+    <tr th:each="coleccion:${colecciones}">
+      <td th:text="${coleccion.id_coleccion}"></td>
+      <td th:text="${coleccion.titulo}"></td>
+      <td th:text="${coleccion.volumen}"></td>
+      <td th:text="${coleccion.capitulos}"></td>
       <td>
-        <a th:href="@{/eliminar/}+${persona.id_persona}" class="btn btn-danger">Eliminar</a>
+        <a th:href="@{/eliminarcoleccion/}+${coleccion.id_coleccion}" class="btn btn-danger">Eliminar</a>
       </td>
     </tr>
     </tbody>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario Serie</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+<div class="container mt-4">
+  <div class="col-sm-6">
+    <form th:action="@{/saveserie}" th:object="${serie}" method="POST">
+      <div class="card-header">
+        <h3>Modulo Serie</h3>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label>TITULO</label>
+          <input th:field="*{titulo}" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>TEMPROADAS</label>
+          <input th:field="*{temporadas}" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>CAPITULOS</label>
+          <input th:field="*{capitulos}" type="text" class="form-control">
+        </div>
+      </div>
+      <div class="card-footer">
+        <input type="submit" value="Guardar" class="btn btn-success">
+      </div>
+    </form>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de series</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+<div class="container mt-4">
+    <a th:href="@{/newserie}" class="btn btn-primary">Nuevo</a>
+    <br><br>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>TITULO</th>
+            <th>VOLUMEN</th>
+            <th>CAPITULOS</th>
+            <th>ACCION</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="serie:${series}">
+            <td th:text="${serie.id_serie}"></td>
+            <td th:text="${serie.titulo}"></td>
+            <td th:text="${serie.temporadas}"></td>
+            <td th:text="${serie.capitulos}"></td>
+            <td>
+                <a th:href="@{/eliminarserie/}+${serie.id_serie}" class="btn btn-danger">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

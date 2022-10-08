@@ -1,6 +1,5 @@
 package com.example.NetpolixWeb.interfaceService;
 
-import com.example.NetpolixWeb.modelo.Persona;
 import com.example.NetpolixWeb.modelo.Videos;
 
 import java.util.List;
