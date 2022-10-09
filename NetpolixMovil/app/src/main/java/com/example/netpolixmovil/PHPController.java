@@ -24,6 +24,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import models.Coleccion;
+import models.Serie;
 import models.Video;
 
 public class PHPController {
@@ -43,9 +45,13 @@ public class PHPController {
 
     //Serie URLs
     private static String ULRCREATESERIE = "http://"+IP+"/netpolix/serie/create.php";
+    private static String ULRDELETESERIE = "http://"+IP+"/netpolix/serie/delete.php";
+    private static String ULRREADALLSERIE = "http://"+IP+"/netpolix/serie/readAll.php";
 
     //Coleccion URLs
     private static String ULRCREATECOLECCION = "http://"+IP+"/netpolix/coleccion/create.php";
+    private static String ULRDELETECOLECCION = "http://"+IP+"/netpolix/coleccion/delete.php";
+    private static String ULRREADALLCOLECCION = "http://"+IP+"/netpolix/coleccion/readAll.php";
 
     //Consultas URLs
     private static String URLCONSULTA = "http://"+IP+"/netpolix/consultas/";
@@ -369,7 +375,171 @@ public class PHPController {
         requestQueue.add(stringRequest);
     }
 
+    public void DeleteSerie(String id){
+        final String idserie = id;
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                ULRCREATESERIE,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Toast.makeText(c, "Delete Succesful", Toast.LENGTH_SHORT).show();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(c, "Delete ERROR", Toast.LENGTH_SHORT).show();
+                        System.out.println("DELETE ERROR: " + error.getMessage());
+                    }
+                }
+        ){
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("id", idserie);
+                return params;
+            }
+        };
+        requestQueue.add(stringRequest);
+    }
+
+    public void ReadAllSerie(){
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
+                Request.Method.GET,
+                ULRREADALLSERIE,
+                null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        ArrayList<Serie> lista = generarListaSeries(response);
+                        Intent intent = new Intent(c, MostrarTabla.class);
+                        intent.putExtra("tipotabla", "Series");
+                        intent.putExtra("tipolista", lista);
+                        c.startActivity(intent);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(c, "Error al generar Videos...", Toast.LENGTH_SHORT).show();
+                        System.out.println("----------------------------");
+                        System.out.println("ERROR: " + error.getMessage());
+                        System.out.println("----------------------------");
+                    }
+                }
+        );
+
+        requestQueue.add(jsonArrayRequest);
+
+    }
+
+    private ArrayList<Serie> generarListaSeries(JSONArray jsonArray){
+
+        ArrayList<Serie> listaseries = new ArrayList<>();
+
+        for (int i = 0; i < jsonArray.length(); i++) {
+            try {
+                Serie serie = new Serie();
+
+                serie.setId_Serie(jsonArray.getJSONObject(i).getString("id_Serie"));
+                serie.setTitulo(jsonArray.getJSONObject(i).getString("titulo"));
+                serie.setTemporadas(jsonArray.getJSONObject(i).getString("temporadas"));
+                serie.setCapitulos(jsonArray.getJSONObject(i).getString("capitulos"));
+
+                System.out.println(jsonArray.get(i).toString());
+                listaseries.add(serie);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        System.out.println("---------CONVERTIDO A ARRAYLIST---------");
+        for (int i = 0; i < listaseries.size(); i++) {
+            System.out.println(listaseries.get(i));
+        }
+        System.out.println("----------------------------------------");
+
+        if (listaseries.isEmpty()){
+            System.out.println("----------------------------");
+            System.out.println("LA LISTA DE PERFILES ESTA VACIA");
+            System.out.println(listaseries.size());
+            System.out.println("----------------------------");
+        }
+
+        return listaseries;
+
+    }
+
     //Coleccion
+    public void ReadAllColeccion(){
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
+                Request.Method.GET,
+                ULRREADALLCOLECCION,
+                null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        ArrayList<Coleccion> lista = generarListaColeccion(response);
+                        Intent intent = new Intent(c, MostrarTabla.class);
+                        intent.putExtra("tipotabla", "Colecciones");
+                        intent.putExtra("tipolista", lista);
+                        c.startActivity(intent);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(c, "Error al generar Videos...", Toast.LENGTH_SHORT).show();
+                        System.out.println("----------------------------");
+                        System.out.println("ERROR: " + error.getMessage());
+                        System.out.println("----------------------------");
+                    }
+                }
+        );
+
+        requestQueue.add(jsonArrayRequest);
+
+    }
+
+    private ArrayList<Coleccion> generarListaColeccion(JSONArray jsonArray){
+
+        ArrayList<Coleccion> listacoleccion = new ArrayList<>();
+
+        for (int i = 0; i < jsonArray.length(); i++) {
+            try {
+                Coleccion coleccion = new Coleccion();
+
+                coleccion.setId_Coleccion(jsonArray.getJSONObject(i).getString("id_Coleccion"));
+                coleccion.setTitulo(jsonArray.getJSONObject(i).getString("titulo"));
+                coleccion.setVolumen(jsonArray.getJSONObject(i).getString("volumen"));
+                coleccion.setCapitulos(jsonArray.getJSONObject(i).getString("capitulos"));
+
+                System.out.println(jsonArray.get(i).toString());
+                listacoleccion.add(coleccion);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        System.out.println("---------CONVERTIDO A ARRAYLIST---------");
+        for (int i = 0; i < listacoleccion.size(); i++) {
+            System.out.println(listacoleccion.get(i));
+        }
+        System.out.println("----------------------------------------");
+
+        if (listacoleccion.isEmpty()){
+            System.out.println("----------------------------");
+            System.out.println("LA LISTA DE PERFILES ESTA VACIA");
+            System.out.println(listacoleccion.size());
+            System.out.println("----------------------------");
+        }
+
+        return listacoleccion;
+
+    }
+
     public void crearColeccion(String tit, String vol, String cap){
         final String titulo = tit;
         final String volumen = vol;
@@ -405,6 +575,36 @@ public class PHPController {
                 params.put("titulo", titulo);
                 params.put("temporadas", volumen);
                 params.put("capitulos", capitulos);
+                return params;
+            }
+        };
+        requestQueue.add(stringRequest);
+    }
+
+    public void DeleteColeccion(String id){
+        final String idcoleccion = id;
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                ULRDELETECOLECCION,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Toast.makeText(c, "Delete Succesful", Toast.LENGTH_SHORT).show();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(c, "Delete ERROR", Toast.LENGTH_SHORT).show();
+                        System.out.println("DELETE ERROR: " + error.getMessage());
+                    }
+                }
+        ){
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("id", idcoleccion);
                 return params;
             }
         };

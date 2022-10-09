@@ -45,30 +45,20 @@ public class CRUD extends AppCompatActivity {
                 CrearVideo();
                 break;
             case "12":
-                CrearSerie();
-                break;
-            case "13":
                 CrearColeccion();
                 break;
-            case "14":
-                //CrearComentario();
+            case "13":
+                CrearSerie();
                 break;
-            case "15":
-                //CrearPublicacion();
             case "21":
                 EditarEliminarVideo();
                 break;
             case "22":
-                //EditarEliminarImagen();
+                EditarEliminarColeccion();
                 break;
             case "23":
-                //EditarEliminarPerfil();
+                EditarEliminarSerie();
                 break;
-            case "24":
-                //EditarEliminarComentario();
-                break;
-            case "25":
-                //EditarEliminarPublicacion();
         }
 
     }
@@ -210,6 +200,68 @@ public class CRUD extends AppCompatActivity {
             public void onClick(View view) {
                 String id = campoId.getText().toString().trim();
                 controller.DeleteVideo(id);
+            }
+        });
+    }
+
+    private void EditarEliminarColeccion(){
+        //Campos desactivados
+        crearCampos.setVisibility(View.INVISIBLE);
+
+        //Campos Activados
+        campo1.setVisibility(View.VISIBLE);
+        campo2.setVisibility(View.VISIBLE);
+        campo3.setVisibility(View.VISIBLE);
+        campo4.setVisibility(View.INVISIBLE);
+        campo5.setVisibility(View.INVISIBLE);
+        campo6.setVisibility(View.INVISIBLE);
+        campo7.setVisibility(View.INVISIBLE);
+        campo8.setVisibility(View.INVISIBLE);
+        campoId.setVisibility(View.INVISIBLE);
+        editarCampos.setVisibility(View.INVISIBLE);
+        eliminarCampos.setVisibility(View.VISIBLE);
+
+        campoId.setText(datosrecibidos.getStringExtra("id"));
+        campo1.setText(datosrecibidos.getStringExtra("titulo"));
+        campo2.setText(datosrecibidos.getStringExtra("volumen"));
+        campo3.setText(datosrecibidos.getStringExtra("capitulos"));
+
+        eliminarCampos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String id = campoId.getText().toString().trim();
+                controller.DeleteColeccion(id);
+            }
+        });
+    }
+
+    private void EditarEliminarSerie(){
+        //Campos desactivados
+        crearCampos.setVisibility(View.INVISIBLE);
+
+        //Campos Activados
+        campo1.setVisibility(View.VISIBLE);
+        campo2.setVisibility(View.VISIBLE);
+        campo3.setVisibility(View.VISIBLE);
+        campo4.setVisibility(View.INVISIBLE);
+        campo5.setVisibility(View.INVISIBLE);
+        campo6.setVisibility(View.INVISIBLE);
+        campo7.setVisibility(View.INVISIBLE);
+        campo8.setVisibility(View.INVISIBLE);
+        campoId.setVisibility(View.INVISIBLE);
+        editarCampos.setVisibility(View.INVISIBLE);
+        eliminarCampos.setVisibility(View.VISIBLE);
+
+        campoId.setText(datosrecibidos.getStringExtra("id"));
+        campo1.setText(datosrecibidos.getStringExtra("titulo"));
+        campo2.setText(datosrecibidos.getStringExtra("temporadas"));
+        campo3.setText(datosrecibidos.getStringExtra("capitulos"));
+
+        eliminarCampos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String id = campoId.getText().toString().trim();
+                controller.DeleteSerie(id);
             }
         });
     }

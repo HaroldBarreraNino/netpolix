@@ -11,7 +11,11 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import adapters.ColeccionAdapter;
+import adapters.SerieAdapter;
 import adapters.VideoAdapter;
+import models.Coleccion;
+import models.Serie;
 import models.Video;
 
 public class MostrarTabla extends AppCompatActivity {
@@ -34,11 +38,11 @@ public class MostrarTabla extends AppCompatActivity {
             case "Videos":
                 tablaVideos();
                 break;
-            case "Comentarios":
-                //tablaComentarios();
+            case "Colecciones":
+                tablaColecciones();
                 break;
-            case "Perfiles":
-                //tablaPerfiles();
+            case "Series":
+                tablaSeries();
                 break;
         }
     }
@@ -51,7 +55,6 @@ public class MostrarTabla extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 int id = i + 1;
-                System.out.println("Video = [" + id + "]");
                 Intent intent = new Intent(MostrarTabla.this, CRUD.class);
                 intent.putExtra("accion", "21");
                 intent.putExtra("id", listavideos.get(i).getId_Video());
@@ -71,6 +74,60 @@ public class MostrarTabla extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(MostrarTabla.this, CRUD.class);
                 i.putExtra("accion", "11");
+                startActivity(i);
+            }
+        });
+    }
+
+    public void tablaColecciones(){
+        ArrayList<Coleccion> listacolecciones = (ArrayList<Coleccion>) getIntent().getSerializableExtra("tipolista");
+        ColeccionAdapter adapter = new ColeccionAdapter(this, listacolecciones);
+        listadatos.setAdapter(adapter);
+        listadatos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                int id = i + 1;
+                Intent intent = new Intent(MostrarTabla.this, CRUD.class);
+                intent.putExtra("accion", "22");
+                intent.putExtra("id", listacolecciones.get(i).getId_Coleccion());
+                intent.putExtra("titulo", listacolecciones.get(i).getTitulo());
+                intent.putExtra("volumen", listacolecciones.get(i).getVolumen());
+                intent.putExtra("capitulos", listacolecciones.get(i).getCapitulos());
+                startActivity(intent);
+            }
+        });
+        btnCrearDato.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MostrarTabla.this, CRUD.class);
+                i.putExtra("accion", "12");
+                startActivity(i);
+            }
+        });
+    }
+
+    public void tablaSeries(){
+        ArrayList<Serie> listaseries = (ArrayList<Serie>) getIntent().getSerializableExtra("tipolista");
+        SerieAdapter adapter = new SerieAdapter(this, listaseries);
+        listadatos.setAdapter(adapter);
+        listadatos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                int id = i + 1;
+                Intent intent = new Intent(MostrarTabla.this, CRUD.class);
+                intent.putExtra("accion", "23");
+                intent.putExtra("id", listaseries.get(i).getId_Serie());
+                intent.putExtra("titulo", listaseries.get(i).getTitulo());
+                intent.putExtra("temporadas", listaseries.get(i).getTemporadas());
+                intent.putExtra("capitulos", listaseries.get(i).getCapitulos());
+                startActivity(intent);
+            }
+        });
+        btnCrearDato.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MostrarTabla.this, CRUD.class);
+                i.putExtra("accion", "13");
                 startActivity(i);
             }
         });

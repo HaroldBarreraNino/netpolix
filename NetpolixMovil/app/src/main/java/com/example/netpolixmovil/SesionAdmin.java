@@ -34,18 +34,14 @@ public class SesionAdmin extends AppCompatActivity {
         btnTablaSeries.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(SesionAdmin.this, CRUD.class);
-                i.putExtra("accion", "12");
-                startActivity(i);
+                phpController.ReadAllSerie();
             }
         });
 
         btnTablaColeccion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(SesionAdmin.this, CRUD.class);
-                i.putExtra("accion", "13");
-                startActivity(i);
+                phpController.ReadAllColeccion();
             }
         });
 
