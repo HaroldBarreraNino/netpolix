@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 08-10-2022 a las 06:03:20
+-- Tiempo de generación: 09-10-2022 a las 03:02:52
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -117,10 +117,10 @@ CREATE TABLE `Cliente` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Coleccion`
+-- Estructura de tabla para la tabla `coleccion`
 --
 
-CREATE TABLE `Coleccion` (
+CREATE TABLE `coleccion` (
   `id_Coleccion` int(11) NOT NULL,
   `titulo` varchar(30) NOT NULL,
   `volumen` int(10) NOT NULL,
@@ -128,10 +128,10 @@ CREATE TABLE `Coleccion` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `Coleccion`
+-- Volcado de datos para la tabla `coleccion`
 --
 
-INSERT INTO `Coleccion` (`id_Coleccion`, `titulo`, `volumen`, `capitulos`) VALUES
+INSERT INTO `coleccion` (`id_Coleccion`, `titulo`, `volumen`, `capitulos`) VALUES
 (1, 'Destarrado', 3, 24),
 (2, 'Destarrado2', 1, 24);
 
@@ -199,7 +199,7 @@ CREATE TABLE `Persona` (
 --
 
 INSERT INTO `Persona` (`id_Persona`, `cedula`, `nombre_completo`, `fecha_nacimiento`) VALUES
-(1, 123456789, 'Juan Camilo Novoa Sanchez', '08-08-2001'),
+(1, 123456789, 'admin', '08-08-2001'),
 (2, 543218753, 'Maria Camila Arevalo Fajard', ''),
 (3, 712587463, 'Diego Peralta Martinez', '01-11-2003'),
 (4, 987562869, 'Laura Daniela Estupinan Caballero', '17-04-2000'),
@@ -230,10 +230,10 @@ INSERT INTO `pqr` (`id_pqr`, `comentario`, `persona`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Serie`
+-- Estructura de tabla para la tabla `serie`
 --
 
-CREATE TABLE `Serie` (
+CREATE TABLE `serie` (
   `id_Serie` int(11) NOT NULL,
   `titulo` varchar(30) NOT NULL,
   `temporadas` int(10) NOT NULL,
@@ -241,10 +241,10 @@ CREATE TABLE `Serie` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `Serie`
+-- Volcado de datos para la tabla `serie`
 --
 
-INSERT INTO `Serie` (`id_Serie`, `titulo`, `temporadas`, `capitulos`) VALUES
+INSERT INTO `serie` (`id_Serie`, `titulo`, `temporadas`, `capitulos`) VALUES
 (6, 'Free Violence', 2, 23),
 (7, 'Free Violence', 2, 24),
 (8, 'Free Violence', 2, 26),
@@ -290,10 +290,10 @@ INSERT INTO `Venta` (`id_Venta`, `cantidad`, `total`, `fecha_venta`, `persona`, 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Videos`
+-- Estructura de tabla para la tabla `videos`
 --
 
-CREATE TABLE `Videos` (
+CREATE TABLE `videos` (
   `id_Video` int(11) NOT NULL,
   `titulo` varchar(30) NOT NULL,
   `duracion` varchar(6) NOT NULL,
@@ -306,10 +306,10 @@ CREATE TABLE `Videos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `Videos`
+-- Volcado de datos para la tabla `videos`
 --
 
-INSERT INTO `Videos` (`id_Video`, `titulo`, `duracion`, `categoria`, `actores`, `directores`, `isan`, `calificacion`, `idioma`) VALUES
+INSERT INTO `videos` (`id_Video`, `titulo`, `duracion`, `categoria`, `actores`, `directores`, `isan`, `calificacion`, `idioma`) VALUES
 (21, 'Iron man', '1:30', 2, 'Robert Downey jr', 'Jon Favreau', 'PG', 4, 2),
 (22, 'La vida es bella', '1:40', 1, 'Roberto Benigni', 'Roberto Benigni', 'PG-13', 5, 1),
 (23, 'La naranja mecanica', '2:16', 3, 'Malcolm McDowell', 'Stanley Kubrick', 'R', 4, 3),
@@ -355,9 +355,9 @@ ALTER TABLE `Cliente`
   ADD KEY `persona` (`persona`);
 
 --
--- Indices de la tabla `Coleccion`
+-- Indices de la tabla `coleccion`
 --
-ALTER TABLE `Coleccion`
+ALTER TABLE `coleccion`
   ADD PRIMARY KEY (`id_Coleccion`),
   ADD KEY `capitulos` (`capitulos`);
 
@@ -397,9 +397,9 @@ ALTER TABLE `pqr`
   ADD KEY `persona` (`persona`);
 
 --
--- Indices de la tabla `Serie`
+-- Indices de la tabla `serie`
 --
-ALTER TABLE `Serie`
+ALTER TABLE `serie`
   ADD PRIMARY KEY (`id_Serie`),
   ADD KEY `capitulos` (`capitulos`);
 
@@ -412,9 +412,9 @@ ALTER TABLE `Venta`
   ADD KEY `video` (`video`);
 
 --
--- Indices de la tabla `Videos`
+-- Indices de la tabla `videos`
 --
-ALTER TABLE `Videos`
+ALTER TABLE `videos`
   ADD PRIMARY KEY (`id_Video`),
   ADD KEY `categoria` (`categoria`),
   ADD KEY `calificacion` (`calificacion`),
@@ -449,10 +449,10 @@ ALTER TABLE `Cliente`
   MODIFY `id_Cliente` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `Coleccion`
+-- AUTO_INCREMENT de la tabla `coleccion`
 --
-ALTER TABLE `Coleccion`
-  MODIFY `id_Coleccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `coleccion`
+  MODIFY `id_Coleccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `Empleado`
@@ -485,10 +485,10 @@ ALTER TABLE `pqr`
   MODIFY `id_pqr` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de la tabla `Serie`
+-- AUTO_INCREMENT de la tabla `serie`
 --
-ALTER TABLE `Serie`
-  MODIFY `id_Serie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+ALTER TABLE `serie`
+  MODIFY `id_Serie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `Venta`
@@ -497,10 +497,10 @@ ALTER TABLE `Venta`
   MODIFY `id_Venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT de la tabla `Videos`
+-- AUTO_INCREMENT de la tabla `videos`
 --
-ALTER TABLE `Videos`
-  MODIFY `id_Video` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+ALTER TABLE `videos`
+  MODIFY `id_Video` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7782;
 
 --
 -- Restricciones para tablas volcadas
@@ -511,7 +511,7 @@ ALTER TABLE `Videos`
 --
 ALTER TABLE `Alquiler`
   ADD CONSTRAINT `Alquiler_ibfk_1` FOREIGN KEY (`persona`) REFERENCES `Persona` (`id_Persona`),
-  ADD CONSTRAINT `Alquiler_ibfk_2` FOREIGN KEY (`video`) REFERENCES `Videos` (`id_Video`);
+  ADD CONSTRAINT `Alquiler_ibfk_2` FOREIGN KEY (`video`) REFERENCES `videos` (`id_Video`);
 
 --
 -- Filtros para la tabla `Cliente`
@@ -520,10 +520,10 @@ ALTER TABLE `Cliente`
   ADD CONSTRAINT `Cliente_ibfk_1` FOREIGN KEY (`persona`) REFERENCES `Persona` (`id_Persona`);
 
 --
--- Filtros para la tabla `Coleccion`
+-- Filtros para la tabla `coleccion`
 --
-ALTER TABLE `Coleccion`
-  ADD CONSTRAINT `Coleccion_ibfk_1` FOREIGN KEY (`capitulos`) REFERENCES `Videos` (`id_Video`);
+ALTER TABLE `coleccion`
+  ADD CONSTRAINT `coleccion_ibfk_1` FOREIGN KEY (`capitulos`) REFERENCES `videos` (`id_Video`);
 
 --
 -- Filtros para la tabla `Empleado`
@@ -544,25 +544,25 @@ ALTER TABLE `pqr`
   ADD CONSTRAINT `pqr_ibfk_1` FOREIGN KEY (`persona`) REFERENCES `Persona` (`id_Persona`);
 
 --
--- Filtros para la tabla `Serie`
+-- Filtros para la tabla `serie`
 --
-ALTER TABLE `Serie`
-  ADD CONSTRAINT `Serie_ibfk_1` FOREIGN KEY (`capitulos`) REFERENCES `Videos` (`id_Video`);
+ALTER TABLE `serie`
+  ADD CONSTRAINT `serie_ibfk_1` FOREIGN KEY (`capitulos`) REFERENCES `videos` (`id_Video`);
 
 --
 -- Filtros para la tabla `Venta`
 --
 ALTER TABLE `Venta`
   ADD CONSTRAINT `Venta_ibfk_1` FOREIGN KEY (`persona`) REFERENCES `Persona` (`id_Persona`),
-  ADD CONSTRAINT `Venta_ibfk_2` FOREIGN KEY (`video`) REFERENCES `Videos` (`id_Video`);
+  ADD CONSTRAINT `Venta_ibfk_2` FOREIGN KEY (`video`) REFERENCES `videos` (`id_Video`);
 
 --
--- Filtros para la tabla `Videos`
+-- Filtros para la tabla `videos`
 --
-ALTER TABLE `Videos`
-  ADD CONSTRAINT `Videos_ibfk_1` FOREIGN KEY (`categoria`) REFERENCES `Categoria` (`id_Categoria`),
-  ADD CONSTRAINT `Videos_ibfk_2` FOREIGN KEY (`calificacion`) REFERENCES `Calificacion` (`id_Calificacion`),
-  ADD CONSTRAINT `Videos_ibfk_3` FOREIGN KEY (`idioma`) REFERENCES `Idioma` (`id_Idioma`);
+ALTER TABLE `videos`
+  ADD CONSTRAINT `videos_ibfk_1` FOREIGN KEY (`categoria`) REFERENCES `Categoria` (`id_Categoria`),
+  ADD CONSTRAINT `videos_ibfk_2` FOREIGN KEY (`calificacion`) REFERENCES `Calificacion` (`id_Calificacion`),
+  ADD CONSTRAINT `videos_ibfk_3` FOREIGN KEY (`idioma`) REFERENCES `Idioma` (`id_Idioma`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

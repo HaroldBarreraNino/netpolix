@@ -32,7 +32,7 @@ public class PHPController {
     Context c;
     RequestQueue requestQueue;
 
-    private static String IP = "192.168.10.15"; //Cambiar esta IP con la de tu internet
+    private static String IP = "192.168.10.19"; //Cambiar esta IP con la de tu internet
 
     //Persona URLs
     private static String URLREGISTER = "http://"+IP+"/netpolix/persona/register.php";
@@ -119,7 +119,7 @@ public class PHPController {
                         try {
                             id = response.getString("id_Persona");
                             if (id.equals("1")){
-                                Intent i = new Intent(c, SesionAdmin.class);
+                                Intent i = new Intent(c, BienvenidoActivity.class);
                                 c.startActivity(i);
                             }else{
                                 Intent i = new Intent(c, SesionUsuario.class);
